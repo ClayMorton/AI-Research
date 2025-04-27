@@ -555,7 +555,7 @@ as I see them after months of research.
 
 [How to train your own model](https://www.youtube.com/watch?v=fCUkvL0mbxI)
 
-[]()
+[Google AI Essentials course in a nutshell](https://www.youtube.com/watch?v=nVyD6THcvDQ)
 
 []()
 
