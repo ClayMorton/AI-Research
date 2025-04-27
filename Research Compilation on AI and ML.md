@@ -530,3 +530,51 @@ as I see them after months of research.
 [Neural Networks](https://www.youtube.com/watch?v=aircAruvnKk&t=2s)
 
 [Neural Network Architecture](https://www.youtube.com/watch?v=oJNHXPs0XDk)
+
+[The 7 Types of AI](https://www.youtube.com/watch?v=XFZ-rQ8eeR8)
+
+[All Machine learning models](https://www.youtube.com/watch?v=yN7ypxC7838)
+
+[Types of AI (Deep Dive)](https://www.youtube.com/watch?v=qYNweeDHiyU&t=2s)
+
+[Why so many Foundation models?](https://www.youtube.com/watch?v=QPQy7jUpmyA)
+
+[How to pick a foundation model](https://www.youtube.com/watch?v=pePAAGfh-IU)
+
+[Most Important ML Algorithms](https://www.youtube.com/watch?v=E0Hmnixke2g)
+
+[Multimodal Models](https://www.youtube.com/watch?v=WkoytlA3MoQ)
+
+[How LLM's Work](https://www.youtube.com/watch?v=5sLYAQS9sWQ)
+
+[5 Minute Neural Network explanation](https://www.youtube.com/watch?v=jmmW0F0biz0)
+
+[]()
+
+[]()
+
+[]()
+
+[]()
+
+[]()
+
+[]()
+
+[]()
+
+[]()
+
+[]()
+
+[]()
+
+[]()
+
+[]()
+
+[]()
+
+
+
+
