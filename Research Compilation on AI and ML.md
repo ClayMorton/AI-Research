@@ -549,7 +549,7 @@ as I see them after months of research.
 
 [5 Minute Neural Network explanation](https://www.youtube.com/watch?v=jmmW0F0biz0)
 
-[]()
+[What are transformers?](https://www.youtube.com/watch?v=ZXiruGOCn9s)
 
 []()
 
