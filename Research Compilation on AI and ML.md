@@ -551,7 +551,7 @@ as I see them after months of research.
 
 [What are transformers?](https://www.youtube.com/watch?v=ZXiruGOCn9s)
 
-[]()
+[How AI learns](https://www.youtube.com/watch?v=R9OHn5ZF4Uo)
 
 []()
 
