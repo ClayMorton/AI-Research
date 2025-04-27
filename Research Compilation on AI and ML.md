@@ -553,7 +553,7 @@ as I see them after months of research.
 
 [How AI learns](https://www.youtube.com/watch?v=R9OHn5ZF4Uo)
 
-[]()
+[How to train your own model](https://www.youtube.com/watch?v=fCUkvL0mbxI)
 
 []()
 
