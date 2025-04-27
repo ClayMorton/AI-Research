@@ -557,23 +557,20 @@ as I see them after months of research.
 
 [Google AI Essentials course in a nutshell](https://www.youtube.com/watch?v=nVyD6THcvDQ)
 
-[]()
+[What are AI agents](https://www.youtube.com/watch?v=F8NKVhkZZWI)
 
-[]()
+[Building a neural network from scratch](https://www.youtube.com/watch?v=cAkMcPfY_Ns&t=1s)
 
-[]()
+[Reinforcement learning from scratch](https://www.youtube.com/watch?v=vXtfdGphr3c&t=171s)
 
-[]()
+[RLHF](https://www.youtube.com/watch?v=T_X4XFwKX8k)
 
-[]()
+[More reinforcement learning](https://www.youtube.com/watch?v=cO5g5qLrLSo)
 
-[]()
+[Create an LLM from scratch](https://www.youtube.com/watch?v=UU1WVnMk4E8)
 
-[]()
+[GPT From scratch](https://www.youtube.com/watch?v=kCc8FmEb1nY)
 
-[]()
-
-[]()
 
 
 
