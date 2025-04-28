@@ -1,0 +1,273 @@
+\documentclass{book}
+\usepackage[letterpaper,left=1in,right=1in,top=1in,bottom=1in]{geometry}
+\usepackage{tocloft} % For customizing TOC
+\usepackage[bookmarks=true,hidelinks]{hyperref}
+
+% Customize Table of Contents indentation
+\setlength{\cftchapindent}{0em}    % Chapter indent
+\setlength{\cftsecindent}{1.5em}   % Section indent under chapter
+\setlength{\cftsubsecindent}{3.5em} % Subsection indent
+\renewcommand{\cftchapfont}{\normalfont\bfseries} % Chapter font in TOC
+\renewcommand{\cftsecfont}{\normalfont}           % Section font in TOC
+\renewcommand{\cftsubsecfont}{\normalfont}        % Subsection font in TOC
+
+% Remove page numbers from empty pages
+\usepackage{emptypage}
+
+\title{A General Overview of AI}
+\author{Clay Morton}
+\date{4/28/25}
+
+\begin{document}
+
+\maketitle
+
+% Force TOC to start immediately after title
+\begingroup
+\let\cleardoublepage\relax
+\tableofcontents
+\endgroup
+
+\chapter{Tiers of AI}
+
+\section{Introduction to the Hierarchy of Intelligence Systems}
+
+Artificial Intelligence (AI) is often treated as a single, unified technology in
+popular discussions, evoking images of sentient machines and omniscient digital 
+assistants. Yet within technical disciplines, AI is understood not as a single 
+technology but as a broad field encompassing several distinct, layered domains. 
+At the highest level, AI is concerned with replicating various aspects of human 
+intelligence. Beneath it lies Machine Learning (ML), which refines this goal by 
+enabling machines to learn from data rather than relying exclusively on 
+pre-programmed rules. Within Machine Learning, Deep Learning (DL) further 
+narrows the approach to architectures composed of layered neural networks that 
+can learn intricate patterns autonomously. Neural Networks themselves, 
+originally inspired by biological neurons, form the foundational computational 
+model enabling much of the current success in AI.
+
+Understanding these hierarchical relationships is crucial because it clarifies 
+why various AI systems differ dramatically in complexity, scope, and capability.
+It also explains why not every AI system involves Machine Learning, why not 
+every Machine Learning application involves Deep Learning, and why discussions 
+of AI can sometimes appear confusing or contradictory. In this chapter, we will 
+untangle these relationships carefully, building a clear and coherent view of 
+the technological landscape.
+
+\section{Artificial Intelligence (AI): The Broad Vision}
+
+The term Artificial Intelligence encompasses the quest to create machines 
+capable of performing tasks that, when executed by humans, require intelligence.
+This broad goal includes capacities such as learning, reasoning, 
+problem-solving, perception, and language comprehension. AI, as a field, dates 
+back to the mid-20th century, with early ambitions famously articulated during 
+the 1956 Dartmouth Conference, where pioneers imagined that a machine could one 
+day replicate every aspect of human intelligence.
+
+A key distinction in AI research is between different levels of cognitive 
+capability. Artificial Narrow Intelligence (ANI) refers to systems designed for 
+a single, specific task or a restricted set of tasks. For example, a 
+recommendation engine that suggests products based on user behavior operates 
+within a narrow domain and would be utterly incapable of performing unrelated 
+tasks such as language translation. Despite remarkable successes, all current AI
+applications—from autonomous vehicles to medical diagnostic tools—fall within 
+the narrow AI category.
+
+In contrast, Artificial General Intelligence (AGI) represents the 
+still-theoretical goal of creating machines with generalized cognitive 
+abilities. An AGI system would not be limited to specific tasks but would 
+instead possess the flexibility to transfer learning across domains, adapt to 
+unfamiliar situations, and reason abstractly in the way that humans can. No AGI 
+system exists today, though it remains a central focus of speculative and 
+theoretical research.
+
+Further extending the spectrum is the notion of Artificial Superintelligence 
+(ASI), which imagines AI systems that surpass human intelligence across all 
+fields, including creativity, emotional understanding, and social acumen. While 
+ASI is even more speculative, its potential raises profound questions about the 
+future of humanity, governance, and ethics in an AI-driven world.
+
+Thus, while AI as a concept encompasses grand aspirations, the current 
+technological reality is firmly rooted in specialized, domain-specific systems 
+characterized by narrow expertise and bounded capability.
+
+\section{Machine Learning (ML): Data-Driven Intelligence}
+
+As researchers pursued the dream of intelligent machines, they quickly 
+encountered the impracticality of manually programming every conceivable 
+scenario a machine might face. This realization led to the emergence of Machine 
+Learning, a paradigm shift that focuses on enabling machines to infer patterns 
+and make decisions based on data rather than on hardcoded instructions.
+
+In a Machine Learning system, instead of specifying explicit rules for a task, 
+we provide the machine with a dataset containing examples. From this data, the 
+machine learns an approximate mapping between inputs and desired outputs. 
+Consider the task of email spam detection: manually enumerating every possible 
+indicator of spam would be impossible, but a Machine Learning model trained on 
+thousands of labeled emails can infer subtle statistical patterns, such as word 
+usage or sender reputation, to generalize to new, unseen emails.
+
+Machine Learning is commonly divided into three major categories, based on the 
+nature of the learning task:
+
+\begin{itemize}
+    \item \textbf{Supervised Learning} involves learning a function from labeled
+    examples, where each input is associated with a known output. Tasks such as 
+    image classification, medical diagnosis, and language translation often fall
+    into this category. Here, the model's success depends heavily on the quality
+    and representativeness of the labeled training data.
+    
+    \item \textbf{Unsupervised Learning}, by contrast, deals with unlabeled 
+    data. The machine seeks to discover hidden structures, patterns, or 
+    groupings within the data itself. Applications such as customer 
+    segmentation, anomaly detection, and topic modeling exemplify unsupervised 
+    learning techniques, where no external guidance about the 'correct' outcomes
+    is available.
+    
+    \item \textbf{Reinforcement Learning} occupies a somewhat different niche. 
+    In this setting, the machine learns by interacting with an environment, 
+    receiving feedback in the form of rewards or penalties. Reinforcement 
+    Learning underpins many recent breakthroughs in game-playing AI, such as 
+    DeepMind's AlphaGo, where the agent learns optimal strategies through 
+    trial-and-error experience over millions of simulated games.
+\end{itemize}
+
+While each learning paradigm has distinct methodologies and challenges, they 
+share a common emphasis on empirical learning from data rather than reliance on 
+fixed programming.
+
+\section{Deep Learning (DL): Layered Representations}
+
+As Machine Learning matured, researchers sought ways to automatically extract 
+and represent increasingly complex features from raw data, leading to the rise 
+of Deep Learning. Deep Learning involves models known as deep neural networks, 
+which consist of multiple layers of processing units (neurons) organized in a 
+hierarchy. Each successive layer transforms its input into a more abstract and 
+composite representation.
+
+One of the key advantages of Deep Learning is its ability to perform 
+representation learning. In traditional Machine Learning, much effort is spent 
+on feature engineering—manually designing the features that the model will use. 
+Deep Learning, by contrast, enables models to learn relevant features 
+automatically. For example, in computer vision, early layers of a deep network 
+might learn to detect simple patterns such as edges or textures, while deeper 
+layers recognize more complex concepts like eyes, faces, or entire objects.
+
+However, this power comes at a cost. Deep Learning models typically require 
+large labeled datasets to achieve high accuracy, and their training demands 
+substantial computational resources, often relying on specialized hardware 
+accelerators such as GPUs or TPUs. Moreover, because of their many layers and 
+millions of parameters, deep networks can be opaque, leading to challenges in 
+interpretability and debugging.
+
+Despite these challenges, Deep Learning has driven many of the most spectacular 
+advances in AI over the past decade. Systems capable of defeating world 
+champions in complex games, generating coherent text, translating languages with
+near-human accuracy, and driving cars autonomously all rely fundamentally on 
+deep architectures.
+
+\section{Neural Networks (NNs): The Computational Core}
+
+At the heart of Deep Learning lie Artificial Neural Networks (ANNs), 
+mathematical structures loosely inspired by the organization of neurons in 
+biological brains. Each artificial neuron receives one or more inputs, computes 
+a weighted sum of these inputs, adds a bias term, and then applies a non-linear 
+transformation known as an activation function.
+
+Neural Networks are organized into layers:
+
+\begin{itemize}
+    \item The input layer receives the raw data.
+    \item One or more hidden layers perform intermediate computations and 
+    extract hierarchical features.
+    \item The output layer produces the final prediction or decision.
+\end{itemize}
+
+The term "deep" in Deep Learning simply refers to networks with many hidden 
+layers. Each additional layer allows the model to capture increasingly abstract 
+patterns, but also makes training more challenging due to issues such as 
+vanishing gradients and overfitting.
+
+A crucial component enabling the expressive power of Neural Networks is the 
+activation function. Without activation functions, a network composed of 
+multiple layers would collapse into an equivalent single-layer model, 
+restricting it to only linear transformations. Common activation functions 
+include:
+
+\begin{itemize}
+    \item \textbf{ReLU (Rectified Linear Unit)}, which outputs zero for 
+    negative inputs and the input itself for positive inputs, enabling efficient 
+    and sparse representations.
+    \item \textbf{Sigmoid}, which squashes inputs to the range (0,1), 
+    historically popular for binary classification tasks but prone to saturation 
+    issues.
+    \item \textbf{Tanh}, which maps inputs to (-1,1), offering zero-centered 
+    activations beneficial for certain architectures.
+\end{itemize}
+
+Training a neural network involves optimizing the weights and biases across all 
+layers to minimize a loss function, typically through gradient-based 
+optimization methods such as stochastic gradient descent (SGD). This process, 
+known as backpropagation, systematically updates parameters to reduce prediction
+errors.
+
+\section{Visualizing the Hierarchy: AI to Neural Networks}
+
+To better conceptualize the relationships among the fields we have discussed, 
+it is helpful to visualize them hierarchically:
+
+\begin{verbatim}
+Artificial Intelligence
+    -> Machine Learning
+        -> Deep Learning
+            -> Generative AG
+                -> Large Language Models
+\end{verbatim}
+
+This structure illustrates the successive specialization at each layer. 
+While all Deep Learning is Machine Learning, not all Machine Learning involves 
+Deep Learning. Likewise, while all Machine Learning falls under the umbrella of 
+AI, many AI systems (especially symbolic AI, expert systems, and rule-based 
+reasoning engines) operate without using Machine Learning techniques at all.
+
+Understanding this nested structure clarifies why discussions about "AI" can 
+sometimes be misleadingly broad: a news article about "AI" might, in fact, be 
+describing a narrow Deep Learning model trained for a single task.
+
+\section{Important Concept: Narrow AI vs. General AI}
+
+The distinction between Narrow AI and General AI is not merely academic; it 
+profoundly shapes what current AI systems can and cannot do. Narrow AI systems 
+operate within well-defined boundaries. They excel at specific tasks but cannot 
+reason outside their training domains. A language model that writes poetry 
+cannot drive a car; a medical diagnostic system cannot negotiate business 
+contracts.
+
+General AI, on the other hand, would require the ability to learn, reason, and 
+adapt across domains without being explicitly retrained. Achieving AGI would 
+involve breakthroughs not only in algorithmic design but also in our fundamental 
+understanding of learning, abstraction, reasoning, and consciousness.
+
+At present, even the most sophisticated AI models exhibit significant 
+limitations, such as brittleness in novel situations, lack of true 
+understanding, and vulnerability to adversarial manipulation. Recognizing these 
+limitations is critical to tempering expectations and responsibly guiding 
+future development.
+
+\section{Chapter Summary}
+
+In this chapter, we explored the layered organization of Artificial Intelligence
+technologies. Beginning with the broad ambition of AI to replicate human 
+cognitive functions, we examined how Machine Learning narrows this focus by 
+enabling machines to learn from data. We then traced how Deep Learning builds 
+upon Machine Learning through the use of layered neural networks capable of 
+autonomously extracting complex representations. Finally, we examined how 
+Neural Networks provide the mathematical and computational substrate for Deep 
+Learning's success.
+
+Understanding these distinctions provides clarity not only in interpreting 
+modern AI achievements but also in assessing their true capabilities and 
+limitations. As we continue our exploration of AI systems, keeping this 
+hierarchical structure in mind will be essential to making sense of a 
+rapidly evolving technological landscape.
+
+\end{document}
