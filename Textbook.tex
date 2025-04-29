@@ -1110,6 +1110,269 @@ AI beyond mere application to true innovation.
 The rest of this textbook builds upon these principles, applying them to the 
 architectures and algorithms that drive modern Artificial Intelligence.
 
+\chapter{Reinforcement Learning}
+
+\section{Learning Through Interaction}
+
+Traditional machine learning paradigms focus on learning from static datasets. 
+In contrast, Reinforcement Learning (RL) involves an agent that actively 
+interacts with its environment to learn how to make decisions.
+
+In RL, an agent observes the environment, takes actions, and receives feedback 
+in the form of rewards. Over time, through trial and error, the agent learns to 
+select actions that maximize cumulative rewards. This framework models a wide 
+range of real-world problems, from robotics and game playing to autonomous 
+vehicles and financial decision-making.
+
+This chapter presents the foundational concepts of reinforcement learning, 
+explores core algorithms, and examines both the successes and challenges that 
+define this important field within Artificial Intelligence.
+
+\section{The Reinforcement Learning Problem}
+
+\subsection{Agents, Environments, and Interaction Cycles}
+
+Reinforcement learning systems are composed of two entities:
+
+\begin{itemize}
+    \item The agent, which makes decisions.
+    \item The environment, which provides observations and rewards in response 
+    to the agent's actions.
+\end{itemize}
+
+At each time step \( t \), the agent:
+
+\begin{itemize}
+    \item Observes a state \( s_t \).
+    \item Selects an action \( a_t \).
+    \item Receives a reward \( r_t \) and a new state \( s_{t+1} \) from the
+     environment.
+\end{itemize}
+
+This interaction forms a trajectory over time:
+
+\[
+(s_0, a_0, r_0, s_1, a_1, r_1, \dots)
+\]
+
+The agent's objective is to learn a strategy, or policy, that selects actions 
+to maximize the expected cumulative reward.
+
+\subsection{The Markov Decision Process (MDP)}
+
+Many reinforcement learning problems are formalized as Markov Decision Processes
+(MDPs). An MDP is defined by:
+
+\begin{itemize}
+    \item A set of states \( S \).
+    \item A set of actions \( A \).
+    \item A transition probability function \( P(s' \mid s, a) \), specifying 
+    the probability of transitioning to state \( s' \) given current state 
+    \( s \) and action \( a \).
+    \item A reward function \( R(s,a) \), giving the expected reward for taking 
+    action \( a \) in state \( s \).
+    \item A discount factor \( \gamma \in [0,1] \), which prioritizes immediate 
+    rewards over distant future rewards.
+\end{itemize}
+
+The Markov property asserts:
+
+\[
+P(s_{t+1} \mid s_t, a_t, s_{t-1}, a_{t-1}, \dots, s_0, a_0) = P(s_{t+1} 
+\mid s_t, a_t)
+\]
+
+This property simplifies the problem and enables tractable learning algorithms.
+
+\section{Core Concepts in Reinforcement Learning}
+
+\subsection{Policies}
+
+A policy \( \pi \) defines the agent's behavior by specifying the probability of 
+selecting each action given a state:
+
+\[
+\pi(a \mid s) = \text{Probability of taking action } a \text{ when in state } s
+\]
+
+Policies can be:
+
+\begin{itemize}
+    \item Deterministic: The agent always chooses the same action for a given 
+    state.
+    \item Stochastic: The agent samples actions from a probability distribution 
+    over actions.
+\end{itemize}
+
+The goal of reinforcement learning is to find an optimal policy \( \pi^* \) that 
+maximizes expected cumulative rewards.
+
+\subsection{Reward Signals}
+
+The reward signal evaluates the desirability of the agent's actions. It provides 
+direct feedback but may be sparse or delayed, making the learning process 
+challenging.
+
+Reward design is critical; poorly designed rewards can lead agents to learn 
+unintended or suboptimal behaviors.
+
+\subsection{Value Functions}
+
+A value function estimates the expected return starting from a state or from a 
+state-action pair.
+
+The state-value function under policy \( \pi \) is:
+
+\[
+V_\pi(s) = \mathbf{E}_\pi \left[ \sum_{k=0}^{\infty} \gamma^k r_{t+k} 
+\mid s_t = s \right]
+\]
+
+The action-value function under policy \( \pi \) is:
+
+\[
+Q_\pi(s, a) = \mathbf{E}_\pi \left[ \sum_{k=0}^{\infty} \gamma^k r_{t+k} 
+\mid s_t = s, a_t = a \right]
+\]
+
+Value functions guide the agent toward selecting actions that lead to higher 
+long-term rewards.
+
+\subsection{Exploration and Exploitation}
+
+A fundamental challenge in reinforcement learning is the 
+exploration-exploitation trade-off:
+
+\begin{itemize}
+    \item Exploitation involves choosing actions that maximize known rewards.
+    \item Exploration involves trying less certain actions to discover 
+    potentially better strategies.
+\end{itemize}
+
+Effective learning requires balancing exploration and exploitation. Common 
+exploration strategies include epsilon-greedy policies and Upper Confidence 
+Bound (UCB) methods.
+
+\section{Fundamental Reinforcement Learning Algorithms}
+
+\subsection{Q-Learning}
+
+Q-Learning is an off-policy, model-free algorithm that seeks to learn the 
+optimal action-value function \( Q^*(s,a) \) directly.
+
+Its core update rule is:
+
+\[
+Q(s_t, a_t) \leftarrow Q(s_t, a_t) + \alpha \left( r_t + \gamma \max_{a'} 
+Q(s_{t+1}, a') - Q(s_t, a_t) \right)
+\]
+
+Where:
+
+\begin{itemize}
+    \item \( \alpha \) is the learning rate.
+    \item \( \gamma \) is the discount factor.
+\end{itemize}
+
+Q-Learning converges to the optimal policy under appropriate conditions, even 
+while following exploratory policies.
+
+\subsection{Deep Q-Networks (DQN)}
+
+For problems with large or continuous state spaces, it is impractical to 
+represent Q-values in a table. Deep Q-Networks (DQNs) approximate the Q-function 
+using deep neural networks.
+
+Key innovations in DQN include:
+
+\begin{itemize}
+    \item \textbf{Experience Replay:} Storing past experiences and training on 
+    randomly sampled batches to reduce correlations.
+    \item \textbf{Target Networks:} Maintaining a separate, slowly-updated 
+    target network to stabilize training.
+\end{itemize}
+
+DQNs demonstrated significant success, notably in mastering a suite of Atari 
+2600 games directly from raw pixel inputs.
+
+\subsection{Policy Gradient Methods}
+
+Rather than approximating value functions, policy gradient methods optimize the 
+policy parameters directly by maximizing the expected reward.
+
+The policy gradient theorem provides the following expression:
+
+\[
+\nabla_\theta J(\theta) = \mathbf{E}_{\pi_\theta} \left[ \nabla_\theta \log 
+\pi_\theta(a \mid s) Q_\pi(s,a) \right]
+\]
+
+where \( \theta \) are the parameters of the policy.
+
+Policy gradient methods, such as REINFORCE, Actor-Critic, and Proximal Policy
+ Optimization (PPO), are especially useful in continuous action spaces and 
+ complex environments.
+
+\section{Reinforcement Learning in Practice}
+
+\subsection{AlphaGo and AlphaZero}
+
+AlphaGo, developed by DeepMind, was the first AI system to defeat a world 
+champion Go player. It combined deep reinforcement learning with tree search 
+algorithms and supervised learning from expert human games.
+
+AlphaZero extended this approach, achieving superhuman performance in Chess, 
+Shogi, and Go purely through self-play, without relying on human data.
+
+These systems exemplified the power of combining model-based search with deep 
+learning.
+
+\subsection{OpenAI Five}
+
+OpenAI Five tackled the complex multiplayer game Dota 2. It demonstrated that 
+reinforcement learning agents, trained through massive parallelization and long 
+time horizons, could achieve strategic coordination and long-term planning 
+capabilities at a professional human level.
+
+\section{Challenges in Reinforcement Learning}
+
+Despite substantial achievements, reinforcement learning remains an active 
+research area due to several persistent challenges:
+
+\begin{itemize}
+    \item \textbf{Sample Inefficiency:} Many algorithms require millions of 
+    interactions with the environment to learn effective policies.
+    \item \textbf{Sparse and Delayed Rewards:} In some tasks, meaningful rewards 
+    are infrequent or delayed, complicating the learning process.
+    \item \textbf{Exploration Difficulties:} Agents can become stuck exploiting 
+    suboptimal strategies without sufficient exploration.
+    \item \textbf{Training Instability:} Non-stationary data distributions and 
+    highly non-linear function approximators can make training unstable.
+\end{itemize}
+
+Addressing these challenges is crucial for making reinforcement learning 
+applicable to broader real-world domains.
+
+\section{Chapter Summary}
+
+Reinforcement Learning provides a powerful framework for training intelligent 
+agents capable of making sequential decisions in uncertain and dynamic 
+environments.
+
+By learning through direct interaction, agents develop policies that maximize 
+cumulative rewards, achieving behaviors that can adapt, plan, and generalize 
+across tasks.
+
+Understanding policies, value functions, exploration strategies, and core 
+algorithms such as Q-Learning, DQN, and policy gradients forms the foundation 
+for advanced study and application in reinforcement learning.
+
+Although reinforcement learning has achieved remarkable milestones, significant 
+challenges remain, particularly in sample efficiency, exploration, and 
+stability. Continued progress in these areas will shape the future capabilities 
+of autonomous AI systems.
+
+
 \chapter{Hardware and Processing Architectures}
 
 \section{Why Hardware Matters in AI}
