@@ -1372,6 +1372,245 @@ challenges remain, particularly in sample efficiency, exploration, and
 stability. Continued progress in these areas will shape the future capabilities 
 of autonomous AI systems.
 
+\chapter{Unsupervised and Self-Supervised Learning}
+
+\section{Learning Beyond Labels}
+Much of the real-world data available today is unlabeled. In contrast to 
+supervised learning, where labeled datasets drive model training, unsupervised 
+and self-supervised learning focus on extracting meaningful structures and 
+representations from data without explicit human annotations.
+
+Unsupervised learning seeks to uncover hidden patterns or groupings in data, 
+while self-supervised learning designs pretext tasks that automatically generate 
+supervisory signals from the data itself. These approaches are increasingly 
+central to modern Artificial Intelligence, especially in domains where acquiring 
+labeled data is expensive, impractical, or impossible.
+
+This chapter explores the principles, methods, and applications of unsupervised 
+and self-supervised learning, highlighting their critical role in the 
+development of scalable and generalizable AI systems.
+
+\section{Unsupervised Learning}
+
+\subsection{Defining Unsupervised Learning}
+In unsupervised learning, the algorithm receives a dataset \( \{ x_1, x_2, 
+\dots, x_n \} \) consisting of input samples without corresponding labels. The 
+objective is to uncover latent structures, patterns, or relationships within 
+the data.
+
+Typical goals of unsupervised learning include:
+\begin{itemize}
+    \item Clustering similar data points.
+    \item Reducing dimensionality for visualization or modeling.
+    \item Learning meaningful data representations.
+\end{itemize}
+
+Unlike supervised learning, there is no explicit "correct" output for each 
+input; instead, success is evaluated through metrics of coherence, compactness, 
+separability, or reconstruction accuracy.
+
+\subsection{Clustering Methods}
+Clustering involves partitioning data into groups (clusters) such that points 
+within a group are more similar to each other than to points in other groups.
+
+\subsubsection{K-Means Clustering}
+One of the simplest and most widely used algorithms, K-Means aims to partition 
+\( n \) observations into \( k \) clusters by minimizing within-cluster 
+variance.
+
+Objective function:
+\[
+\underset{C}{\text{argmin}} \sum_{i=1}^{k} \sum_{x \in C_i} \| x - \mu_i \|^2
+\]
+where \( \mu_i \) is the centroid of cluster \( C_i \).
+
+K-Means is efficient but assumes spherical clusters of similar sizes.
+
+\subsubsection{Hierarchical Clustering}
+Hierarchical clustering builds a hierarchy of clusters through:
+\begin{itemize}
+    \item Agglomerative approach: Start with each point as its own cluster and 
+    iteratively merge.
+    \item Divisive approach: Start with all points in one cluster and 
+    iteratively split.
+\end{itemize}
+The result is often visualized using a dendrogram that shows cluster 
+arrangements at different levels of granularity.
+
+\subsubsection{Density-Based Methods}
+DBSCAN (Density-Based Spatial Clustering of Applications with Noise) identifies 
+clusters based on high-density regions separated by low-density areas. It 
+excels at discovering clusters of arbitrary shape and dealing with noise.
+
+\subsection{Dimensionality Reduction}
+High-dimensional data often lies on a lower-dimensional manifold. Dimensionality 
+reduction techniques aim to uncover this manifold while preserving the essential 
+structure.
+
+\subsubsection{Principal Component Analysis (PCA)}
+PCA identifies orthogonal directions (principal components) along which the 
+variance of the data is maximized. It reduces dimensionality by projecting data 
+onto the top principal components.
+
+Mathematically, PCA seeks eigenvectors of the covariance matrix corresponding to 
+the largest eigenvalues.
+
+\subsubsection{t-SNE and UMAP}
+t-SNE (t-distributed Stochastic Neighbor Embedding) and UMAP (Uniform Manifold 
+Approximation and Projection) are non-linear methods particularly useful for 
+visualizing high-dimensional data in two or three dimensions while preserving 
+local structure.
+
+\subsection{Generative Models}
+Unsupervised learning also encompasses generative models, which aim to model the 
+underlying probability distribution of data and generate new samples.
+
+Important examples include:
+\begin{itemize}
+    \item Gaussian Mixture Models (GMMs): Model data as a mixture of several 
+    Gaussian distributions.
+    \item Variational Autoencoders (VAEs): Use deep learning to encode data into 
+    a latent space and reconstruct inputs, while imposing a probabilistic 
+    structure.
+    \item Generative Adversarial Networks (GANs): Employ adversarial training 
+    between a generator and a discriminator to synthesize realistic data.
+\end{itemize}
+Generative models serve not only for sample generation but also for learning 
+meaningful representations.
+
+\section{Self-Supervised Learning}
+
+\subsection{Motivation and Definition}
+Self-supervised learning (SSL) sits between supervised and unsupervised 
+learning. It constructs pretext tasks where the input data itself provides the 
+supervisory signal, eliminating the need for manually annotated labels.
+
+In SSL, models are trained to predict parts of the input from other parts or to 
+solve a task derived automatically from the structure of the data.
+
+The success of self-supervised methods has significantly advanced fields such as 
+natural language processing, computer vision, and speech recognition.
+
+\subsection{Pretext Tasks in Self-Supervised Learning}
+
+\subsubsection{Context Prediction}
+In context prediction tasks, models learn to predict missing pieces of the data.
+
+Examples:
+\begin{itemize}
+    \item \textbf{Masked Language Modeling}: As used in BERT, words are randomly 
+    masked in a sentence, and the model is trained to predict the missing 
+    tokens.
+    \item \textbf{Masked Image Modeling}: In computer vision, masking patches of 
+    an image and predicting them trains models to understand visual structures.
+\end{itemize}
+
+\subsubsection{Contrastive Learning}
+Contrastive learning focuses on distinguishing between similar (positive) and 
+dissimilar (negative) examples.
+
+Given an anchor sample, a positive sample (similar) and negative samples 
+(different) are selected. The model is trained to minimize the distance between 
+anchor and positive while maximizing the distance from negatives.
+
+Important methods include:
+\begin{itemize}
+    \item SimCLR: Learns image representations through augmented view contrast.
+    \item MoCo (Momentum Contrast): Maintains a dynamic memory bank for negative 
+    samples.
+    \item BYOL (Bootstrap Your Own Latent): Learns representations without 
+    explicit negatives, using a momentum encoder.
+\end{itemize}
+
+\subsubsection{Predicting Transformations}
+Another pretext task involves predicting the transformation applied to data. For 
+example, a model might learn to predict the rotation angle applied to an image 
+(0°, 90°, 180°, or 270°).
+
+Such tasks force models to learn meaningful features that reflect the data's 
+underlying structure.
+
+\subsection{Applications of Self-Supervised Learning}
+Self-supervised learning has led to major advancements:
+\begin{itemize}
+    \item \textbf{Language Models}: Models like GPT and BERT use self-supervised 
+    objectives for pretraining on vast corpora, later fine-tuned for specific 
+    tasks.
+    \item \textbf{Vision Models}: Models like DINO, MAE, and CLIP pretrain on 
+    large image datasets without manual labels, achieving state-of-the-art 
+    performance on downstream tasks.
+    \item \textbf{Speech and Audio}: Self-supervised methods enable pretraining
+     on raw audio, leading to breakthroughs in speech recognition and synthesis.
+\end{itemize}
+
+By leveraging unlabeled data, self-supervised methods scale more naturally and 
+achieve high generalization.
+
+\section{Comparison Between Supervised, Unsupervised, and Self-Supervised Learning}
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Aspect} & \textbf{Supervised Learning} & 
+\textbf{Unsupervised Learning} & \textbf{Self-Supervised Learning} \\
+\hline
+\textbf{Data Requirements} & Requires labeled data & No labels required & 
+No labels; labels generated from data \\
+\hline
+\textbf{Objective} & Predict specific labels & Discover structure & 
+Solve pretext tasks \\
+\hline
+\textbf{Examples} & Image classification, sentiment analysis & 
+Clustering, anomaly detection & Masked language modeling, contrastive 
+learning \\
+\hline
+\textbf{Strengths} & High performance on well-labeled tasks & 
+General-purpose structure discovery & Scalable pretraining, strong 
+representations \\
+\hline
+\textbf{Weaknesses} & Expensive data labeling & Hard to evaluate 
+performance & Pretext task may not align perfectly with target tasks \\
+\hline
+\end{tabular}
+\caption{Comparison of Supervised, Unsupervised, and Self-Supervised Learning}
+\end{table}
+
+\section{Challenges and Future Directions}
+While unsupervised and self-supervised learning offer significant advantages, 
+several challenges persist:
+\begin{itemize}
+    \item \textbf{Evaluation Metrics}: Without explicit labels, assessing the 
+    quality of learned representations remains difficult.
+    \item \textbf{Task Alignment}: Pretext tasks must be carefully designed to 
+    ensure that the learned features are useful for downstream tasks.
+    \item \textbf{Scalability}: Some self-supervised learning methods require 
+    large amounts of compute, particularly for contrastive learning with many 
+    negative samples.
+    \item \textbf{Theoretical Understanding}: The mechanisms underlying why 
+    certain pretext tasks succeed are still an active area of research.
+\end{itemize}
+
+Future research aims to develop more efficient, theoretically grounded methods 
+that generalize across domains with minimal supervision.
+
+\section{Chapter Summary}
+Unsupervised and self-supervised learning represent essential approaches to 
+building AI systems that learn effectively from vast amounts of unlabeled data.
+
+Unsupervised learning techniques, including clustering, dimensionality 
+reduction, and generative modeling, discover underlying structures in data 
+without guidance. Self-supervised learning advances this further by constructing 
+artificial tasks that encourage the extraction of rich, generalizable 
+representations.
+
+These methods have enabled major advances across vision, language, and audio, 
+and they increasingly form the backbone of modern AI models, especially those 
+designed to operate at scale without reliance on expensive labeled datasets.
+
+As the field progresses, unsupervised and self-supervised learning are likely to 
+play an even larger role in the pursuit of flexible, efficient, and 
+generalizable Artificial Intelligence.
+
 
 \chapter{Hardware and Processing Architectures}
 
